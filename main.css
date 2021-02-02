@@ -1,0 +1,15 @@
+.img {
+    border-radius: 30px;
+    border: blue 3px solid;
+    height: 200px;
+}
+body {
+    background-image: linear-gradient(to bottom right, red, yellow);
+
+    margin-top: 50px;
+}
+.skill {
+    text-align: start;
+    justify-content: end;
+    margin-top: 20px;
+}
