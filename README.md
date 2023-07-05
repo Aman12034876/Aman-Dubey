@@ -140,11 +140,10 @@ return (
   </SafeAreaView>
   );
 ```
-
-The Button onPress will launch the widget, and a Close Button is provided inside the widget for easy closure. When the widget is closed, it retains its current state, allowing it to be relaunched from the same state if the app is not killed.
-
+<br>
+<br>
+<br>
  
-
 
 ## License
 
