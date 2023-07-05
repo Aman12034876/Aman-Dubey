@@ -10,22 +10,22 @@ After login at MSG91 follow below steps to get your hello chat widget configurat
 * From navigation drawer expand Manage > Inboxes > Select Inbox as Chat > Edit Widget.
 * Configure your widget and copy the **helloConfig** object.
 
-## Installing
+## Installation
 
-``` 
+```shell 
 npm install @msg91comm/react-native-hello-sdk
 ```
 
 * Note - Please mention these dependencies in your package.json under dependencies.
-``` 
+```sh 
  "cobrowse-sdk-react-native": "^2.13.0",
  "react-native-webview": "^11.23.1"
 ```
-### Example 
+**Example** 
 ```sh
 "dependencies": {
-    #"react": "18.1.0",
-    #"react-native": "0.70.5",
+    "react": "18.1.0",
+    "react-native": "0.70.5",
     "@msg91comm/react-native-hello-sdk": "^1.0.0",
     "cobrowse-sdk-react-native": "^2.13.0",
     "react-native-webview": "^11.23.1"
@@ -37,13 +37,13 @@ npm install @msg91comm/react-native-hello-sdk
 ### Widget Setup:
 Import package in your Navigation container file or Screen:
 
-```
+```javascript
 import ChatWidget from '@msg91comm/react-native-hello-sdk';
 ```
 
 Store your config object in a variable:
 
-```  
+```javascript  
 var helloConfig = {
     widgetToken: "XXXXX",
     unique_id: <unique_id>, 
@@ -53,12 +53,13 @@ var helloConfig = {
     }
 ```
 
-Use Component ChatWidget and provide props as shown below.
-```
+Place the ChatWidget component at the bottom inside your Navigation container or Screen:
+```javascript
 return (
   <NavigationContainer>
-    {/* Other Screens or Navigation Stacks */}
-    <ChatWidget 
+    {/* Other Screens or Navigation Stacks... */}
+    <ChatWidget
+       preLoaded={true}
        customColor={'#FFFFFF'}
        statusBarStyle={'dark-content'}
        helloConfig={helloConfig}
@@ -66,32 +67,83 @@ return (
   </NavigationContainer>
   );
 ```
-This widget is optimized for positioning using the "position: absolute" style property, allowing it to seamlessly overlay your entire app interface.
+*Note:* This widget is optimized for positioning using the "position: absolute" style property, allowing it to seamlessly overlay your entire app interface.
 
 To ensure optimal visual integration and prevent interference with other absolute elements, we strongly recommend placing the chat widget within your navigation container. By positioning it at the bottom of the container, you can ensure a consistent and undisturbed layout for the widget.
 
 Alternatively, if you are using the chat widget within a specific screen, it is advisable to position it at the bottom of that screen. This placement strategy ensures a cohesive user experience, as the chat widget remains easily accessible without obstructing other essential elements.
 
 ### Invoke Widget:
-You can invoke this widget from anywhere in your app:
-Just import DeviceEventEmitter from react native
-```
+You can invoke this widget from anywhere in your app: 
+
+Just import DeviceEventEmitter from react-native
+```javascript
   import { DeviceEventEmitter } from 'react-native';
 ```
 and
-```
+```javascript
   <Button title="Chat with us"
     onPress={() => DeviceEventEmitter.emit("HelloEvents", { status: true })}
   />
 ```
+The Button onPress will launch the widget, and a Close Button is provided inside the widget for easy closure. When the widget is closed, it retains its current state, allowing it to be relaunched from the same state if the app is not killed.
+
 
 #### Properties
 
 | Prop                         | Type         | value   | Description                                                           |
 | ---------------------------- | ------------ | ------- | --------------------------------------------------------------------- |
-| preLoaded                    | boolean      | true, false    | Loads widget on app initialization and keeps it's instance     |
-| customColor                  | string       | 'hex-color-code'    | Sets StatusBar color and widget's background color             |
-| statusBarStyle               | string       | 'default', 'light-content', 'dark-content' | Changes status bar content color   |
+| customColor                  | string       | 'hex-color-code'    | Sets StatusBar color and widget's background color        |
+| statusBarStyle               | string       | 'light-content', 'dark-content' | Changes status bar content color              |
+| preLoaded                    | boolean      | `true`, `false`    | `true` pre-loads widget content and keeps it ready to launch. On `false`, widget content loads when it is invoked  |
+
+<br>
+<br>
+<br>
+
+***If the widget is applied in a particular screen:**
+
+Import ChatWidget and DeviceEventEmitter in your Screen:
+
+```javascript
+import { DeviceEventEmitter } from 'react-native';
+import ChatWidget from '@msg91comm/react-native-hello-sdk';
+```
+
+Store your config object in a variable:
+
+```javascript  
+var helloConfig = {
+    widgetToken: "XXXXX",
+    unique_id: <unique_id>, 
+    name: <name>,  
+    number: <number>,
+    mail: <mail>
+    }
+```
+
+Place the ChatWidget component at the bottom of your Screen code:
+```javascript
+return (
+  <SafeAreaView>
+    {/* Your Screen Code... */}
+    <Button title="Chat with us"
+      onPress={() => DeviceEventEmitter.emit("HelloEvents", { status: true })}
+    />
+    {/* Your Screen Code... */}
+    <ChatWidget
+       preLoaded={true} 
+       customColor={'#FFFFFF'}
+       statusBarStyle={'dark-content'}
+       helloConfig={helloConfig}
+    />
+  </SafeAreaView>
+  );
+```
+
+The Button onPress will launch the widget, and a Close Button is provided inside the widget for easy closure. When the widget is closed, it retains its current state, allowing it to be relaunched from the same state if the app is not killed.
+
+ 
 
 
 ## License
