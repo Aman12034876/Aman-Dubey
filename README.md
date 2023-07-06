@@ -81,7 +81,7 @@ Just import DeviceEventEmitter from react-native
 and
 ```javascript
   <Button title="Chat with us"
-    onPress={() => DeviceEventEmitter.emit("HelloEvents", { status: true })}
+    onPress={() => DeviceEventEmitter.emit("showHelloWidget", { status: true })}
   />
 ```
 The Button onPress will launch the widget, and a Close Button is provided inside the widget for easy closure. When the widget is closed, it retains its current state, allowing it to be relaunched from the same state if the app is not killed.
@@ -132,7 +132,7 @@ return (
   <SafeAreaView>
     {/* Your Screen Code... */}
     <Button title="Chat with us"
-      onPress={() => DeviceEventEmitter.emit("HelloEvents", { status: true })}
+      onPress={() => DeviceEventEmitter.emit("showHelloWidget", { status: true })}
     />
     {/* Your Screen Code... */}
     <ChatWidget
