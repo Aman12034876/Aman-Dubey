@@ -52,6 +52,7 @@ var helloConfig = {
     mail: <mail>
     }
 ```
+_Note:_ Ensure that `helloConfig` object does not contain any key with `null` or `undefined` value, else it will show loader.
 
 Place the ChatWidget component at the bottom inside your Navigation container or Screen:
 ```javascript
@@ -60,18 +61,15 @@ return (
     {/* Other Screens or Navigation Stacks... */}
     <ChatWidget
        preLoaded={true}
-       customColor={'#FFFFFF'}
-       statusBarStyle={'dark-content'}
+       customColor={'#FFFF00'}
        helloConfig={helloConfig}
     />
   </NavigationContainer>
   );
 ```
-*Note:* This widget is optimized for positioning using the "position: absolute" style property, allowing it to seamlessly overlay your entire app interface.
+*Note:* This widget is optimized for positioning using the `position: 'absolute'` style property, allowing it to seamlessly overlay your entire app interface.
 
-To ensure optimal visual integration and prevent interference with other absolute elements, we strongly recommend placing the chat widget within your navigation container. By positioning it at the bottom of the container, you can ensure a consistent and undisturbed layout for the widget.
-
-Alternatively, if you are using the chat widget within a specific screen, it is advisable to position it at the bottom of that screen. This placement strategy ensures a cohesive user experience, as the chat widget remains easily accessible without obstructing other essential elements.
+To ensure optimal visual integration and prevent interference with other absolute elements, we strongly recommend placing the chat widget within your navigation container. Position it at the bottom of the navigation container/screen, this will ensure that the chat widget remains easily accessible without obstructing other absolute elements in your app.
 
 ### Invoke Widget:
 You can invoke this widget from anywhere in your app: 
@@ -91,17 +89,24 @@ The Button onPress will launch the widget, and a Close Button is provided inside
 
 #### Properties
 
-| Prop                         | Type         | value   | Description                                                           |
-| ---------------------------- | ------------ | ------- | --------------------------------------------------------------------- |
-| customColor                  | string       | 'hex-color-code'    | Sets StatusBar color and widget's background color        |
-| statusBarStyle               | string       | 'light-content', 'dark-content' | Changes status bar content color              |
-| preLoaded                    | boolean      | `true`, `false`    | `true` pre-loads widget content and keeps it ready to launch. On `false`, widget content loads when it is invoked  |
+| Prop                         | Type              | value   | Description                                                           |
+| ---------------------------- | ----------------- | ------- | --------------------------------------------------------------------- |
+| helloConfig                  | object (Required) | `{ widgetToken: "XXXXX", name: 'Aman', mail: 'example@xyz.com', ...}` | Configuration object from Hello dashboard |
+| customColor                  | string            | `'hex-color-code'`    | Sets StatusBar color and widget's background color        |
+| statusBarStyle               | string            | `'light-content'`, `'dark-content'` | Changes status bar content color              |
+| preLoaded                    | boolean           | `true`, `false`    | `true` pre-loads widget content and keeps it ready to launch. On `false`, widget content loads when it is invoked  |
 
 <br>
 <br>
 <br>
 
-***If the widget is applied in a particular screen:**
+---
+
+### Another Example
+<br>
+<br>
+
+**If the widget is applied in a particular screen:**
 
 Import ChatWidget and DeviceEventEmitter in your Screen:
 
@@ -133,8 +138,7 @@ return (
     {/* Your Screen Code... */}
     <ChatWidget
        preLoaded={true} 
-       customColor={'#FFFFFF'}
-       statusBarStyle={'dark-content'}
+       customColor={'#FFFF00'}
        helloConfig={helloConfig}
     />
   </SafeAreaView>
