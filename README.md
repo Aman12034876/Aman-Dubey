@@ -104,7 +104,6 @@ The Button onPress will launch the widget, and a Close Button is provided inside
 
 ### Another Example
 <br>
-<br>
 
 **If the widget is applied in a particular screen:**
 
