@@ -1,6 +1,6 @@
 # React Native Chat Widget by MSG91 # HelloSDK
 
-<img src="https://user-images.githubusercontent.com/60983778/207020610-9eb32587-7878-4604-bdaf-88ec87f634f8.jpg" height="400">
+<img src="./Screenshot_20230706-124814.jpg" height="400" alt="Image" style="border-radius: 8px;">
 
 ## Getting started
 
