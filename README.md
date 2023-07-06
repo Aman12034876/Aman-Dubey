@@ -92,7 +92,7 @@ The Button onPress will launch the widget, and a Close Button is provided inside
 | Prop                         | Type              | value   | Description                                                           |
 | ---------------------------- | ----------------- | ------- | --------------------------------------------------------------------- |
 | helloConfig                  | object (Required) | `{ widgetToken: "XXXXX", name: 'Aman', mail: 'example@xyz.com', ...}` | Configuration object from Hello dashboard |
-| customColor                  | string            | `'hex-color-code'`    | Sets StatusBar color and widget's background color        |
+| customColor                  | string (Required) | `'hex-color-code'`    | Sets StatusBar color and widget's background color        |
 | statusBarStyle               | string            | `'light-content'`, `'dark-content'` | Changes status bar content color              |
 | preLoaded                    | boolean           | `true`, `false`    | `true` pre-loads widget content and keeps it ready to launch. On `false`, widget content loads when it is invoked  |
 
