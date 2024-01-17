@@ -1,3 +1,6 @@
+Faltu commit
+Faltu commit 2
+
 # React Native Chat Widget by MSG91 # HelloSDK
 
 <img src="./Screenshot_20230706-124814.jpg" height="400" alt="Image" style="border-radius: 8px;">
